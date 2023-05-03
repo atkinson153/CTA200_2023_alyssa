@@ -1,0 +1,166 @@
+    1   
+  100  who
+  101  makedir
+  102  makedir CTA200_2023
+  103  mkdir CTA200_2023
+  104  pwd
+  105  /fs/lustre/scratch/atkinson
+  106  pwd
+  107  cd /fs/lustre/scratch/atkinson
+  108  pwd
+  109  mkdir CTA200_2023
+  110  ls -la
+  111  cd/mnt/scratch-lustre/atkinson/
+  112  cd /mnt/scratch-lustre/$USER/
+  113  git clone https://github.com/beniz/eigenmvn.git
+  114  dir
+  115  ls -la
+  116  cd eigenmvn
+  117  dir
+  118  g++ -I/usr/include -I/usr/include/eigen3 -g -std=c++11 test_eigenmvn.cc
+  119  -o t
+  120  head README.md
+  121  load module gcc
+  122  ssh cosmo3 
+  123  /mnt/scratch-lustre/atkinson
+  124  dor
+  125  dir
+  126  ls
+  127  ls -ls
+  128  ls-la
+  129  ls -la
+  130  whoami
+  131  cd /mnt/scratch-lustre/atkinson
+  132  dir
+  133  mkdir/mnt/scratch-lustre/atkinson/CTA200_2023/assignment_1
+  134  mkdir/mnt/scratch-lustre/$USER/CTA200_2023/assignment_1
+  135  dir
+  136  mkdir[assignment_1]
+  137  dir
+  138  mkdir assignment_1
+  139  cd /mnt/scratch-lustre/atkinson
+  140  dir
+  141  rmdir assignment_1
+  142  dir
+  143  cd/mnt/scratch-lustre/atkinson/CTA200_2023
+  144  cd /mnt/scratch-lustre/atkinson/CTA200_2023
+  145  dir
+  146  ls -la
+  147  who am i
+  148  who
+  149  mkdir assignment_1
+  150  dir
+  151  touch README.md
+  152  dir
+  153  rmdir README.md
+  154  del README.md
+  155  rm README.md
+  156  dir
+  157  cd /mnt/scratch-lustre/atkinson/CTA200_2023/assignment1
+  158  cd /mnt/scratch-lustre/atkinson/CTA200_2023/assignment_1
+  159  dir
+  160  touch README.md
+  161  dir
+  162  vi<README.md>
+  163  vi README.md
+  164  cd/mnt/scratch-lustre/atkinson/CTA200_2023/assignment_1
+  165  cd /mnt/scratch-lustre/atkinson/CTA200_2023/assignment_1
+  166  dir
+  167  I # CTA200 2023
+  168  vi I # CTA200 2023
+  169  more README.md
+  170  cd README.md
+  171  vi README.md
+  172  dir
+  173  rm I
+  174  dir
+  175  vi README.md
+  176  dir
+  177  vi README.md
+  178  $ vi README.md
+  179  vi README.md
+  180  rm .README.md.swp
+  181  vi README.md
+  182  rm .README.md.swp
+  183  vi README.md
+  184  scp lobster:/scratch/murray/cta200/GSVimCheatsheet.png /mnt/scratch-lustre/$USER
+  185  scp lobster:/scratch/murray/cta200/GSVimCheatsheet.png /mnt/scratch-lustre/murray
+  186  scp lobster:/scratch/murray/cta200/GSVimCheatsheet.png /mnt/scratch-lustre/$USER
+  187  scp lobster:/scratch/murray/cta200/GSVimCheatsheet.png /mnt/scratch-lustre/atkinsn
+  188  vi README.md
+  189  :x
+  190  vi README.md
+  191  vi README.MD
+  192  vi README.md
+  193  cd /home/murrau
+  194  cd /home/murray
+  195  dir
+  196  find-name Hello_world.c
+  197  find-Hello_world.c
+  198  find Hello_world.c 
+  199  find Hello_world.py
+  200  cp -av /home/murray/Hello_world.c /mnt/scratch-lustre/atkinson/CTA200_2023/assignment_!
+  201  cp -av /home/murray/Hello_world.c /mnt/scratch-lustre/atkinson/CTA200_2023/assignment_1
+  202  dir
+  203  cp -av /home/murray/Hello_world.py /mnt/scratch-lustre/atkinson/CTA200_2023/assignment_1
+  204  cd /mnt/scratch-lustre/atkinson/CTA200_2023/assignment_1
+  205  dir
+  206  mv Hello_world.c Hello_world_atkinson.c
+  207  mv Hello_world.py Hello_world_atkinson.py
+  208  dir
+  209  moudle load gcc
+  210  module load gcc
+  211  g++ Hello_world_atkinson.c
+  212  gcc -o Hello_world.x Hello_world_atkinson.c
+  213  Hello_world
+  214  dir
+  215  rm a.out
+  216  rm Hello_world.x
+  217  dir
+  218  g++ Hello_world_atkinson.cc -o Hello_world.x
+  219  g++ Hello_world_atkinson.c -o Hello_world.x
+  220  Hello_world
+  221  dir
+  222  Hello_world.x
+  223  ./Hello_world.x
+  224  module load python
+  225  modules avail
+  226  module avail
+  227  ./Hello_world_atkinson.py
+  228  ./Hello_world_atkinson
+  229  Hello_world_atkinson.py
+  230  dir
+  231  Hello_world_atkinson.py
+  232  python Hello_world_atkinson.py
+  233  cd/mnt/scratch-lustre/atkinson
+  234  cd /mnt/scratch-lustre/atkinson
+  235  dir
+  236* cd /mnt/scratch-lustre/atkins
+  237  dir
+  238  rm assignment_!
+  239  rm assignment_1
+  240  dir
+  241  cd /mnt/scratch-lustre/atkinson/CTA200_2023/assignment_1
+  242  dir
+  243  rm README.md
+  244  dir
+  245  cd /mnt/scratch-lustre/atkinson/CTA200_2023
+  246  dir
+  247  touch README.md
+  248  dir
+  249  vi README.md
+  250  cd /mnt/scratch-lustre/atkinson/CTA200_2023/assignment_1
+  251  dir
+  252  vi Hello_world_atkinson.c
+  253  vi Hello_world_atkinson.py
+  254  ./Hello_world.x
+  255  g++ Hello_world_atkinson.c -o Hello_world.x
+  256  ./Hello_world.x
+  257  python Hello_world_atkinson.py
+  258  ./Hello_world.x > output_c.txt
+  259  dir
+  260  python Hello_world_atkinson.py > output_python.txt
+  261  dir
+  262  vi output_python.txt
+  263  history
+  264  history > history.txt
