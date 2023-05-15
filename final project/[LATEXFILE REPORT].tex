@@ -1,0 +1,337 @@
+
+\documentclass[apj]{emulateapj}
+
+%% \usepackage{natbib}
+\usepackage{graphicx}
+
+\usepackage{amssymb,amsmath}
+\usepackage{hyperref}
+\singlespace
+
+
+%% Editing markup...
+\usepackage{color}
+
+\journalinfo{}
+
+
+
+
+
+
+\begin{document}
+
+\title{CTA200H Project: 
+Polarized radiative transfer as a probe of cosmic magnetic fields
+}
+ 
+\author{Student: Alyssa Atkinson}{Project written by: Jennifer Y.H. Chan}
+\altaffiltext{1}{CITA, University of Toronto}
+ 
+
+
+
+
+\section{Introduction}
+\subsection{Project description}
+In this project, polarized radiative transfer(PRT) is studied through a series of assigned exercises. First, it is shown mathematically the forms that Faraday rotation and conversion take in the high frequency limit. Next, using Python, the PRT equation is solved using in the absence of absorption, emission, and Faraday conversion. Also using Python, Faraday rotation and conversion are computed at the high frequency limit and these results are discussed. Next, the rotation measure equation is derived from a restrictive form of the PRT equation. Lastly, polarization state data from the Green Bank Telescope is visualized using Python.
+\\
+
+\subsection{Useful background information}
+When radiation passes through magnetized regions of space, its polarization properties can be used to study cosmic magnetic fields.  The polarized radiative transfer equation is used for this. (Chan, 2019). The PRT equation in the absence of scattering, absorbtion, emission and Faraday conversion is: 
+
+\begin{equation}\label{eq:test}
+\frac{\mathrm{d}}{\mathrm{d} s}\left[\begin{array}{l}
+Q_\nu \\
+U_\nu
+\end{array}\right]=-\left[\begin{array}{cc}
+0 & f_\nu \\
+-f_\nu & 0
+\end{array}\right]\left[\begin{array}{l}
+Q_\nu \\
+U_\nu
+\end{array}\right]
+\end{equation}
+Where ${Q_\nu}$ and ${U_\nu}$ are two of four frequency specific Stokes parameters, and $f_\nu$ is Faraday conversion. 
+
+In a magnetized thermal plasma with only thermal electrons present, the Faraday rotation( $f_{\text {th }} $) and Faraday conversion-another parameter in the full PRT equation- ( $h_{\text {th }} $) are given by: 
+
+
+
+\begin{equation}\label{eq:test2}
+f_{\mathrm{th}}  =\frac{\left(\omega_{\mathrm{p}}^2 / c \omega_{\mathrm{B}}\right) \cos \theta}{\left(\omega^2 / \omega_{\mathrm{B}}^2\right)-1} 
+\end{equation}
+
+
+
+\begin{equation}\label{eq:test3}
+h_{\mathrm{th}} =\frac{\left(\omega_{\mathrm{p}}^2 / c \omega_{\mathrm{B}}\right) \sin ^2 \theta}{2\left(\omega^3 / \omega_{\mathrm{B}}^3-\omega / \omega_{\mathrm{B}}\right)}
+\end{equation}
+\\
+
+Pacholczyk, 1977. Here,  the radiation angular frequency is $\omega=2 \pi \nu
+$, the plasma frequency is $\omega_{\mathrm{p}}=\left(4 \pi n_{\mathrm{e}, \mathrm{th}} e^2 / m_{\mathrm{e}}\right)^{1 / 2}
+$, the electron gyrofrequency is $
+\omega_{\mathrm{B}}=\left(e B / m_{\mathrm{e}} c\right)
+$ , the thermal electron number density is  $
+n_{\mathrm{e}, \mathrm{th}}
+$, B is the magnetic field strength and the angle between the direction of radiation propagation and magnetic field is $\theta$. 
+
+\section{expressions for Faraday rotation and conversion in the high frequency limit(EXERCISE 1 and 2)}
+\subsection{High frequency limit Faraday rotation(Exercise 1)}
+
+First, consider \eqref{eq:test2}, Faraday rotation in the high frequency limit, that is, $\omega \gg \omega_B$. Expanding: 
+
+$$
+f_{\mathrm{th}}  =\frac{\left(\omega_{\mathrm{p}}^2 / c \omega_{\mathrm{B}}\right) \cos \theta}{((\omega^2-\omega_{\mathrm{B}}^2) / \omega_{\mathrm{B}}^2)} \\
+$$
+
+
+ 
+Since $\omega \gg \omega_B$, the ${(\omega^2-\omega_{\mathrm{B}}^2)}$ term can be approximated as just ${\omega^2}$, which along with simplification gives: 
+
+$$
+f_{\mathrm{th}}=\frac{\omega_{\mathrm{p}}^2 \omega_{\mathrm{B}} \cos \theta} {c \omega^2}
+$$
+
+
+Now, substituting in the expressions outlined in the introduction for $\omega$,  $\omega_{\mathrm{p}}$, and $
+\omega_{\mathrm{B}}$:
+
+$$
+f_{\mathrm{th}}=\frac{\left(4 \pi n_{\mathrm{e}, \mathrm{th}} e^2 / m_{\mathrm{e}}\right)\left(e B / m_{\mathrm{e}} c\right) \cos \theta} {c {(2\pi \nu)}^2}
+$$
+
+Lastly, substituting in $\nu = \frac{c}{\lambda}$ and recognizing $B \cos\theta = B_{\|}$ as the magnetic field along the line of sight, the final form  for Faraday rotation in the high frequency range is obtained to be:
+\begin{equation} \label{eq:test4}
+f_{\mathrm{th}}=\frac{1}{\pi}\left(\frac{e^3}{m_{\mathrm{e}}^2 c^4}\right) n_{\mathrm{e}, \mathrm{th}} B_{\|} \lambda^2
+\end{equation}
+
+\subsection{High frequency limit Faraday conversion}
+Expanding \eqref{eq:test2}: 
+
+
+$$
+h_{\mathrm{th}} =\frac{\left(\omega_{\mathrm{p}}^2 / c \omega_{\mathrm{B}}\right) \sin ^2 \theta}{2(\omega^3  - \omega\omega_{\mathrm{B}}^2)/\omega_{\mathrm{B}}}
+$$
+
+
+Since $\omega \gg \omega_B$, the $\omega^3  - \omega\omega_{\mathrm{B}}^2 $ term can be approximated as just ${\omega^3}$, which along with simplification gives: 
+$$
+h_{\mathrm{th}} =\frac{\omega_{\mathrm{p}}^2 \omega_{\mathrm{B}}^2\sin ^2 \theta}{2c\omega^3}
+$$
+
+Now, substituting in the expressions outlined in the introduction for $\omega$,  $\omega_{\mathrm{p}}$, and $
+\omega_{\mathrm{B}}$:
+$$
+h_{\mathrm{th}} =\frac{(4 \pi n_{\mathrm{e}, \mathrm{th}} e^2 / m_{\mathrm{e}}){(e B / m_{\mathrm{e}} c )}^2\sin ^2 \theta}{2c{(2 \pi \nu)}^3}
+$$
+
+
+Lastly, substituting in $\nu = \frac{c}{\lambda}$ , the final form  for Faraday rotation in the high frequency range is obtained to be:
+\begin{equation}\label{eq:test5}
+h_{\mathrm{th}}=\frac{1}{4 \pi^2}\left(\frac{e^4}{m_{\mathrm{e}}^3 c^5}\right) n_{\mathrm{e}, \mathrm{th}} B^2 \sin ^2 \theta\lambda^3
+\end{equation}
+The wavelength dependence of high frequency limit Faraday conversion is ${{\lambda}^3}$. 
+
+
+\section{Solving the PRT in a specific case(Exercise 3 and 4)}
+In this section, the PRT equation for the case laid out in \eqref{eq:test} was solved in Python using the symbolic python library. (See  notebook for the code). The general solution is as follows:
+\begin{equation}
+\mathrm{Q}_{\mathrm{v}}(s)=-i C_1 e^{-i f_v s}+i C_2 e^{i f_v s}
+\end{equation}
+
+\begin{equation}
+\mathrm{U}_{\mathrm{v}}(s)=C_1 e^{-i f_v s}+C_2 e^{i f_v s}
+\end{equation}
+
+
+Next the following initial conditions on the Stokes Parameters were used: 
+$$
+\mathrm{Q}_{\mathrm{v}}(s)= 0
+$$
+\\   
+$$
+\mathrm{U}_{\mathrm{v}}(s)=1
+$$
+
+Which were entered into the ODE solver in sympy to obtain the particular solution:
+
+\begin{equation}
+Q_v(s)=\frac{i e^{i f_v s}}{2}-\frac{i e^{-i f_v s}}{2}= -\sin{f_{v}s}
+\end{equation}
+
+\begin{equation}
+\mathrm{U}_{\mathrm{v}}(s)=\frac{e^{i f_v s}}{2}+\frac{e^{-i f_v s}}{2}= \cos{f_{v}s}
+\end{equation}
+
+This solution was then visualized as follows(for a constant $f_{v}$ chosen to be 1: 
+
+\begin{center}
+\includegraphics[width=72mm]{PRTPLOT.pdf}\\
+\label{plot 1}
+Figure 1: Stokes Parameters Q and U as a function of path length s 
+\end{center}
+
+
+\section{Evaluating Faraday rotation and conversion in the high frequency limit(Exercise 5, 6, 7 and 8)}
+\subsection{Faraday rotation}
+Using equation \eqref{eq:test4}, a function was created  for Faraday rotation. (See notebook for the code). At a frequency of 700MHz, this was evaluated for three cases(assuming $\cos{theta}=1$, i.e. magnetic field is parallel to line of sight:
+
+i) Warm ionized interstellar medium(ISM), with $n_{\mathrm{e}, \mathrm{th}}=10^{-1} \mathrm{~cm}^{-3} \text { and } B=10 \mu \mathrm{G}$: 
+
+$f_{\mathrm{th}}=2 \times 10^{10} \frac{\mathrm{s}^4 \mathrm{G}}{\mathrm{g}^2 \mathrm{~cm}^5}$
+
+ii) Intracluster Medium (ICM): $n_{\mathrm{e}, \text { th }}=10^{-3} \mathrm{~cm}^{-3}$ and $B=1 \mu \mathrm{G}$.
+
+$f_{\mathrm{th}}=2 \times 10^{10} \frac{\mathrm{s}^4 \mathrm{G}}{\mathrm{g}^2 \mathrm{~cm}^5}$
+
+iii) Intergalactic Medium (IGM): $n_{e, t h}=10^{-7} \mathrm{~cm}^{-3}$ and $B=1 \mathrm{nG}$.
+
+
+$f_{\mathrm{th}}=2 \frac{\mathrm{s}^4 \mathrm{G}}{\mathrm{g}^2 \mathrm{~cm}^5}$\\
+
+
+
+The same cases were then evaluated at a frequency of 1.4GHz:
+\\
+i) Warm ionized interstellar medium(ISM), with 
+$n_{\mathrm{e}, \mathrm{th}}=10^{-1} \mathrm{~cm}^{-3} \text { and } B=10 \mu \mathrm{G}$: 
+
+$f_{\mathrm{th}}=4 \times 10^{9} \frac{\mathrm{s}^4 \mathrm{G}}{\mathrm{g}^2 \mathrm{~cm}^5}$
+
+ii) Intracluster Medium (ICM): $n_{\mathrm{e}, \text { th }}=10^{-3} \mathrm{~cm}^{-3}$ and $B=1 \mu \mathrm{G}$.
+
+$f_{\mathrm{th}}=4 \times 10^{6} \frac{\mathrm{s}^4 \mathrm{G}}{\mathrm{g}^2 \mathrm{~cm}^5}$
+
+
+iii) Intergalactic Medium (IGM): $n_{e, t h}=10^{-7} \mathrm{~cm}^{-3}$ and $B=1 \mathrm{nG}$.
+
+$f_{\mathrm{th}}=4 \times 10^{-1} \frac{\mathrm{s}^4 \mathrm{G}}{\mathrm{g}^2 \mathrm{~cm}^5}$
+
+\subsection{Faraday conversion}
+Using equation \eqref{eq:test5}, a function was created  for Faraday conversion. (See notebook for the code).  At a frequency of 700MHz, this was evaluated for three cases(assuming $\sin ^2 \theta=1)$, i.e. magnetic field is perpendicular to line of sight:
+
+i) Warm ionized interstellar medium(ISM), with $n_{\mathrm{e}, \mathrm{th}}=10^{-1} \mathrm{~cm}^{-3} \text { and } B=10 \mu \mathrm{G}$: 
+
+$f_{\mathrm{th}}=6 \times 10^{22} \frac{\mathrm{s}^5 \mathrm{G^2}}{\mathrm{g}^3 \mathrm{~cm}^5}$
+
+ii) Intracluster Medium (ICM): $n_{\mathrm{e}, \text { th }}=10^{-3} \mathrm{~cm}^{-3}$ and $B=1 \mu \mathrm{G}$.
+
+$f_{\mathrm{th}}=6 \times 10^{20} \frac{\mathrm{s}^5 \mathrm{G^2}}{\mathrm{g}^3 \mathrm{~cm}^5}$
+
+iii) Intergalactic Medium (IGM): $n_{e, t h}=10^{-7} \mathrm{~cm}^{-3}$ and $B=1 \mathrm{nG}$.
+
+
+$f_{\mathrm{th}}=6 \times 10^{8} \frac{\mathrm{s}^5 \mathrm{G^2}}{\mathrm{g}^3 \mathrm{~cm}^5}$
+\\
+
+
+The same cases were then evaluated at a frequency of 1.4GHz:
+\\
+i) Warm ionized interstellar medium(ISM), with 
+$n_{\mathrm{e}, \mathrm{th}}=10^{-1} \mathrm{~cm}^{-3} \text { and } B=10 \mu \mathrm{G}$: 
+
+$f_{\mathrm{th}}=7 \times 10^{21} \frac{\mathrm{s}^4 \mathrm{G}}{\mathrm{g}^2 \mathrm{~cm}^6}$
+
+ii) Intracluster Medium (ICM): $n_{\mathrm{e}, \text { th }}=10^{-3} \mathrm{~cm}^{-3}$ and $B=1 \mu \mathrm{G}$.
+
+$f_{\mathrm{th}}=7 \times 10^{17} \frac{\mathrm{s}^4 \mathrm{G}}{\mathrm{g}^2 \mathrm{~cm}^6}$
+
+
+iii) Intergalactic Medium (IGM): $n_{e, t h}=10^{-7} \mathrm{~cm}^{-3}$ and $B=1 \mathrm{nG}$.
+
+$f_{\mathrm{th}}=7 \times 10^{7} \frac{\mathrm{s}^4 \mathrm{G}}{\mathrm{g}^2 \mathrm{~cm}^6}$
+\\
+
+The results in the above calculations are rough and not absolute because magnetic field and electron number density vary throughout the cosmic media being studied. (Chan, 2023). The reason why these magneto-ionic properties vary is because the ISM, ICM and IGM are not homogenous. For example, in the ISM, there are regions that are hotter and less condensed and regions that are colder and more condensed, and thus their properties vary(Chan, 2020). Similarly, the temperature and therefore other properties of the ICM can change depending on the gravitational potential of the cluster(ibid). These diffuse media have a wide range of physical conditions within them which cause their properties to vary.
+\\
+\section{Deriving expression for rotation measure(Exercise 9)}
+This derivation is guided by Appendix D in J.Y.H Chan, 2020. Under the assumptions that there is no absorption, emission,and Faraday conversion, then the PRT equation reduces to \eqref{eq:test}. The system in \eqref{eq:test} expanded is: 
+$$
+\frac{d}{d s} \mathrm{Q}_{\mathrm{v}}(s)=-f_v \mathrm{U}_{\mathrm{v}}(s), \frac{d}{d s} \mathrm{U}_{\mathrm{v}}(s)=f_v \mathrm{Q}_{\mathrm{v}}(s)
+$$
+
+This leads to the following: 
+\begin{equation}
+f_v=\frac{1}{U^2+Q^2}\lgroup{Q\frac{\text{d}U}{\text{d}s}}-{U\frac{\text{d}Q}{\text{d}s}}\rgroup
+\end{equation}
+By definition, the linear polarization angle is $\varphi \equiv 0.5 \arctan (U / Q)$. The change in this quantity is: 
+$$
+\frac{\text{d}}{\text{d}s}\varphi=\frac{\text{d}}{\text{d}s}\arctan\lgroup0.5\left(\frac{U}{V}\right)\rgroup
+\\
+$$
+$$
+\frac{\text{d}}{\text{d}s}\varphi=\frac{1}{2}\frac{1}{U^2+Q^2}\lgroup{Q\frac{\text{d}U}{\text{d}s}}-{U\frac{\text{d}Q}{\text{d}s}}\rgroup
+$$
+
+Now using equation (10):
+$$
+\frac{\text{d}}{\text{d}s}\varphi=\frac{f}{2}
+$$
+
+Now, assuming $f=f_{th}$ as written in (4), and integrating:
+$$
+\varphi(s)=\varphi_0+\frac{2 \pi e^3}{m_{\mathrm{e}}^2(c \omega)^2} \int_{s_0}^s \mathrm{~d} s^{\prime} n_{\mathrm{e}, \mathrm{th}}\left(s^{\prime}\right) B_{\|}\left(s^{\prime}\right)
+$$
+
+Next, using the formula for rotation measure:
+$$
+R=(\Delta \varphi) \lambda^{-2}=\left(\varphi-\varphi_0\right) \lambda^{-2}
+$$
+$$
+R=(\varphi_0-\varphi_0+\frac{2 \pi e^3}{m_{\mathrm{e}}^2(c \omega)^2} \int_{s_0}^s \mathrm{~d} s^{\prime} n_{\mathrm{e}, \mathrm{th}}\left(s^{\prime}\right) B_{\|}\left(s^{\prime}\right))\lambda^-2
+$$
+Using $\lambda=2 \pi c / \omega$, the final expression for rotation measure under the listen assumptions is derived: 
+
+\begin{equation}
+\mathcal{R}(s)=\frac{e^3}{2 \pi m_{\mathrm{e}}^2 c^4} \int_{s_0}^s \mathrm{~d} s^{\prime} n_{\mathrm{e}}\left(s^{\prime}\right) B_{\|}\left(s^{\prime}\right)
+\end{equation}
+
+
+
+
+\section{Visualizing Stokes parameters using data from the Green Bank Telescope(GBT)}
+The Stokes Parameters I, Q, U and V were mapped using 11h GBT data. (See  notebook for the code). For each Stokes parameter(I,Q,U and V), a map was made for minimum and maximum frequency. These maps ca be studied to reveal features such as depolarization canals.
+
+\begin{center}
+\includegraphics[width=72mm]{Intensity map for maximum frequency.pdf}\\
+\includegraphics[width=72mm]{Intensity map for minimum frequency.pdf}\\
+\label{plot 1}
+Figures 2 and 3: Stokes Parameter I(Intensity) Mapped at maximum and minimum frequency
+
+\includegraphics[width=72mm]{Q map for maximum frequency.pdf}\\
+\includegraphics[width=72mm]{Q map for minimum frequency.pdf }\\
+\label{plot 1}
+Figures 4 and 5: Stokes Parameter Q Mapped at maximum and minimum frequency
+
+\includegraphics[width=72mm]{U map for maximum frequency.pdf}\\
+\includegraphics[width=72mm]{U map for minimum frequency.pdf }\\
+\label{plot 1}
+Figures 7 and 8: Stokes Parameter U Mapped at maximum and minimum frequency
+
+\includegraphics[width=72mm]{V map for maximum frequency.pdf}\\
+\includegraphics[width=72mm]{V map for minimum frequency.pdf }\\
+\label{plot 1}
+Figures 9 and 10: Stokes Parameter V Mapped at maximum and minimum frequency
+\end{center}
+
+\section{References}
+Chan, Jennifer Yik Ham; (2020) All-sky radiative transfer and characterisation for cosmic structures. Doctoral thesis (Ph.D), UCL (University College London). \\
+
+Chan, Jennifer Yik Ham. "CTA200H project: Polarzied radiative transfer as a probe of cosmic magnetic fields." CITA, University of Toronto, 2023.
+\\
+
+A. G. Pacholczyk. Radio galaxies: Radiation transfer, dynamics, stability and evolution of a synchrotron plasmon, volume 89 of Int. Series in Natural Philosophy. Pergamon Press, Oxford, New York, Toronto, Sydney, Paris, Frankfurt, 1977.
+
+
+%\acknowledgments
+
+%% %% \bibliographystyle{act}
+%% \bibliographystyle{apj}
+
+%% \bibliography{lenscib_refs.bib,apj-jour}
+
+
+
+\end{document}
